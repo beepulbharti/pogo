@@ -48,15 +48,15 @@ Run the following commands from the root of the repository:
 
 ```bash
 cd stocks
-uv run getSandP.py
-uv run forecast.py
+uv run run_experiment.py --stock <stock_name>
 uv run generate_figures.py --stock <stock_name>
 ```
 
-For example to generate figures for the AAPL stock,
+For example, to run the experiment and generate figures for the AAPL stock, run the following commands
 
 ```bash
-uv run forecast.py --stock AAPL
+uv run run_experiment.py --stock AAPL
+uv run generate_figures.py --stock AAPL
 ```
 
 ---
