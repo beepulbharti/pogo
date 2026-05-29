@@ -1,6 +1,6 @@
 # POGO
 
-This is the code release for the paper *Multiaccuracy and Multicalibration with Proxy Groups*
+This is the code release for the paper *Parameter-Free and Group Conditional Online Conformal Prediction*
 
 by [Beepul Bharti](https://beepulbharti.github.io), Ambar Pal, [Jacopo Teneggi](https://jacopoteneggi.github.io/) and [Jeremias Sulam](https://jsulam.github.io/).
 
@@ -50,16 +50,10 @@ Run the following commands from the root of the repository:
 cd stocks
 uv run getSandP.py
 uv run forecast.py
-uv run generate_figures.py
+uv run generate_figures.py --stock <stock_name>
 ```
 
-To run forecasts for a specific stock, replace the forecast command with:
-
-```bash
-uv run forecast.py --stock <stock_name>
-```
-
-For example:
+For example to generate figures for the AAPL stock,
 
 ```bash
 uv run forecast.py --stock AAPL
