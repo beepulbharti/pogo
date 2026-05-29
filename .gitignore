@@ -1,0 +1,30 @@
+# Python cache/build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.vscode/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# uv/package artifacts
+# Usually keep uv.lock if this is an application/reproducible project.
+# Uncomment the next line only if you do NOT want to track uv.lock.
+# uv.lock
+
+# More explicit versions for mimic/synthetic/stocks if desired
+mimic/results/
+mimic/figures/
+
+synthetic/results/
+synthetic/figures/
+
+stocks/data/
+stocks/results/
+stocks/figures/
