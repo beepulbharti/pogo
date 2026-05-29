@@ -85,7 +85,7 @@ def style_coverage_axis(ax, title, xlabel):
     ax.set_xlabel(xlabel, fontsize=AXIS_SIZE)
     ax.set_ylabel("Lowest Observed Group Coverage", fontsize=AXIS_SIZE)
 
-    ax.tick_params(axis="x", which="both", labelsize=TICK_SIZE, pad=10)
+    ax.tick_params(axis="x", which="major", labelsize=TICK_SIZE, pad=10)
     ax.tick_params(axis="y", which="major", labelsize=TICK_SIZE, pad=10)
     ax.grid(True, linestyle="-", linewidth=1, alpha=0.5)
 

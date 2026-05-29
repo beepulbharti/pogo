@@ -50,7 +50,7 @@ def forecast_stock(
 
     start_idx = 0
     for idx in tqdm(range(start_forecast_idx, len(df)), desc="Forecasting"):
-        start_idx = max(0, idx - window_size)
+        # start_idx = max(0, idx - window_size)
         train_data = df[['ds', 'y']].iloc[start_idx:idx]
 
         model = Prophet()

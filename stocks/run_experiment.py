@@ -71,7 +71,6 @@ if __name__ == "__main__":
     S, C = load_S_C(stock=stock)
     T = C.shape[0]
     num_groups = C.shape[1]
-    total_groups = num_groups + 1
 
     for alpha in alpha_grid:
         print(f"Running {stock} alpha={alpha:.3f}")
