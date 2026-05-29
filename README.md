@@ -2,7 +2,8 @@
 
 This is the code release for the paper *Multiaccuracy and Multicalibration with Proxy Groups*
 
-by [Beepul Bharti](https://beepulbharti.github.io), Ambar Pal, [Jacopo Teneggi](https://jacopoteneggi.github.io/)  and [Jeremias Sulam](https://jsulam.github.io/).
+by [Beepul Bharti](https://beepulbharti.github.io), Ambar Pal, [Jacopo Teneggi](https://jacopoteneggi.github.io/) and [Jeremias Sulam](https://jsulam.github.io/).
+
 ---
 
 ## Setup
@@ -25,53 +26,34 @@ uv sync
 
 ## Synthetic experiments
 
-From the root of the repository:
+Run the following commands from the root of the repository:
 
 ```bash
 cd synthetic
-```
-
-Run all synthetic experiments:
-
-```bash
 uv run run_all.py
+uv run generate_figures.py --num-groups 50
 ```
 
-Generate figures:
+To generate figures for a different number of groups, replace `50` with the desired value of `k`:
 
 ```bash
 uv run generate_figures.py --num-groups <k>
-```
-
-For example:
-
-```bash
-uv run generate_figures.py --num-groups 50
 ```
 
 ---
 
 ## Stock market experiments
 
-From the root of the repository:
+Run the following commands from the root of the repository:
 
 ```bash
 cd stocks
-```
-
-Download/process S&P data:
-
-```bash
 uv run getSandP.py
-```
-
-Run forecasts for all stocks:
-
-```bash
 uv run forecast.py
+uv run generate_figures.py
 ```
 
-Or run forecasts for a specific stock:
+To run forecasts for a specific stock, replace the forecast command with:
 
 ```bash
 uv run forecast.py --stock <stock_name>
@@ -83,30 +65,18 @@ For example:
 uv run forecast.py --stock AAPL
 ```
 
-Generate figures:
+---
+
+## MIMIC-IV experiments
+
+Run the following commands from the root of the repository:
 
 ```bash
+cd mimic
+uv run run_experiment.py
 uv run generate_figures.py
 ```
 
 ---
 
-## MIMIC-IV experiments
-
-From the root of the repository:
-
-```bash
-cd mimic
-```
-
-Run the experiment:
-
-```bash
-uv run run_experiment.py
-```
-
-Generate figures:
-
-```bash
-uv run generate_figures.py
-```
+## References
