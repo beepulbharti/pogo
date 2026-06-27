@@ -39,8 +39,20 @@ DGP_NAMES = [
     "unbounded_extreme",
 ]
 
-GCACI_COLOR_MAP = mpl.cm.Reds
-OTHER_COLOR = "#0700C8"
+# GCACI_COLOR_MAP = mpl.cm.viridis
+# OTHER_COLOR = "#0700C8"
+
+OTHER_COLOR = "#0000CC"  # POGO blue
+
+GCACI_COLORS = {
+    0.01: "#E69F00",
+    0.05: "#D55E00",
+    0.10: "#009E73",
+    0.25: "#CC79A7",
+    0.50: "#8C564B",
+    0.75: "#E7298A",
+    1.00: "#BCBD22",
+}
 
 
 def is_gcaci(method: str) -> bool:
@@ -54,30 +66,46 @@ def parse_lr(method: str) -> float:
     return float(m.group(1))
 
 
-def make_color_and_label_functions(df):
-    methods = sorted(df["method"].unique())
-    gcaci_methods = [m for m in methods if is_gcaci(m)]
+# def make_color_and_label_functions(df):
+#     methods = sorted(df["method"].unique())
+#     gcaci_methods = [m for m in methods if is_gcaci(m)]
 
-    if gcaci_methods:
-        lrs = np.array([parse_lr(m) for m in gcaci_methods], dtype=float)
-        norm = mpl.colors.Normalize(vmin=float(lrs.min()), vmax=float(lrs.max()))
-    else:
-        norm = None
+#     if gcaci_methods:
+#         lrs = np.array([parse_lr(m) for m in gcaci_methods], dtype=float)
+#         norm = mpl.colors.Normalize(vmin=float(lrs.min()), vmax=float(lrs.max()))
+#     else:
+#         norm = None
 
+#     def color_for_method(method: str):
+#         if is_gcaci(method):
+#             u = norm(parse_lr(method))
+#             # u = 0.30 + 0.60 * u
+#             u = 0.05 + 0.90 * u
+#             return GCACI_COLOR_MAP(u)
+#         return OTHER_COLOR
+
+#     def label_for_method(method: str):
+#         if is_gcaci(method):
+#             return f"GC-ACI lr={parse_lr(method):g}"
+#         return method
+
+#     return color_for_method, label_for_method
+
+def make_color_and_label_functions(methods):
     def color_for_method(method: str):
         if is_gcaci(method):
-            u = norm(parse_lr(method))
-            u = 0.30 + 0.60 * u
-            return GCACI_COLOR_MAP(u)
+            lr = parse_lr(method)
+            return GCACI_COLORS[lr]
         return OTHER_COLOR
 
     def label_for_method(method: str):
         if is_gcaci(method):
-            return f"GC-ACI lr={parse_lr(method):g}"
+            return rf"GCACI ($\eta$ = {parse_lr(method):g})"
+        if method == "cw_group_up":
+            return "POGO"
         return method
 
     return color_for_method, label_for_method
-
 
 def filter_coverage_band(g):
     in_band = (
